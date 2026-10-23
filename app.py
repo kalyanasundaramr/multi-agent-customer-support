@@ -109,7 +109,7 @@ def build_support_crew():
         llm=MODEL_NAME,
         tools=[],
         allow_delegation=False,
-        verbose=False,
+        verbose=True,
     )
 
     # Agent 2: Search the web and prepare an independent answer.
@@ -127,7 +127,7 @@ def build_support_crew():
         llm=MODEL_NAME,
         tools=[web_search_tool],
         allow_delegation=False,
-        verbose=False,
+        verbose=True,
     )
 
     # Agent 3: Save the original query and both complete answers.
@@ -145,7 +145,7 @@ def build_support_crew():
         llm=MODEL_NAME,
         tools=[save_support_record],
         allow_delegation=False,
-        verbose=False,
+        verbose=True,
     )
 
     # Task 1: Direct answer.
@@ -208,7 +208,7 @@ def build_support_crew():
         agents=[assistant, web_assistant, entry_agent],
         tasks=[assistant_task, web_search_task, entry_task],
         process=Process.sequential,
-        verbose=False,
+        verbose=True,
     )
 
     return crew, assistant_task, web_search_task, entry_task
